@@ -1,20 +1,13 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
+import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Contact Clarioft Technologies",
   description:
-    "Contact Clarioft Technologies to discuss business software, custom applications, automation and digital projects.",
+    "Discuss business software, custom applications, automation and digital projects with Clarioft Technologies.",
 };
-
-const enquiryTypes = [
-  "Business management system",
-  "CRM or customer platform",
-  "Custom software development",
-  "Workflow automation",
-  "Other business technology enquiry",
-];
 
 export default function ContactPage() {
   return (
@@ -37,9 +30,9 @@ export default function ContactPage() {
             </p>
 
             <div className="contact-detail">
-              <span>EMAIL</span>
-              <a href="mailto:hello@clarioft.com">
-                hello@clarioft.com
+              <span>BUSINESS EMAIL</span>
+              <a href="mailto:servicesa947@gmail.com">
+                servicesa947@gmail.com
               </a>
             </div>
 
@@ -52,33 +45,13 @@ export default function ContactPage() {
               <span>ENQUIRIES</span>
               <strong>Business systems · Software · Automation</strong>
             </div>
-          </div>
 
-          <div className="contact-enquiry-card">
-            <span className="eyebrow">PROJECT ENQUIRY</span>
-            <h2>What would you like to discuss?</h2>
-            <p>
-              Choose the closest enquiry category to prepare an email
-              with the right subject.
-            </p>
-
-            <div className="enquiry-options">
-              {enquiryTypes.map((type) => (
-                <a
-                  href={`mailto:hello@clarioft.com?subject=${encodeURIComponent(type)}`}
-                  key={type}
-                >
-                  <span>{type}</span>
-                  <span aria-hidden="true">↗</span>
-                </a>
-              ))}
+            <div className="contact-direct-note">
+              Prefer email? Write to us directly and tell us what you need.
             </div>
-
-            <p className="contact-note">
-              Your email application will open so you can provide your
-              project details and send the enquiry.
-            </p>
           </div>
+
+          <ContactForm />
         </div>
       </section>
     </>

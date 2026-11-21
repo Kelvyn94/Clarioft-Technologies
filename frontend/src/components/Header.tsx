@@ -6,10 +6,10 @@ import Brand from "@/components/Brand";
 
 const navigation = [
   { label: "Home", href: "/" },
-  { label: "Solutions", href: "/#solutions" },
-  { label: "Industries", href: "/#industries" },
-  { label: "Our approach", href: "/#approach" },
-  { label: "About", href: "/#about" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Industries", href: "/industries" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Header() {
@@ -31,7 +31,10 @@ export default function Header() {
           <span />
         </button>
 
-        <nav className={`main-nav ${menuOpen ? "is-open" : ""}`}>
+        <nav
+          className={`main-nav ${menuOpen ? "is-open" : ""}`}
+          aria-label="Main navigation"
+        >
           {navigation.map((item) => (
             <Link
               key={item.label}
@@ -43,7 +46,7 @@ export default function Header() {
           ))}
 
           <Link
-            href="/#contact"
+            href="/contact"
             className="nav-cta"
             onClick={() => setMenuOpen(false)}
           >

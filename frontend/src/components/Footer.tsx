@@ -18,15 +18,15 @@ export default function Footer() {
           <div className="footer-links">
             <div>
               <h3>Explore</h3>
-              <Link href="/#about">About us</Link>
-              <Link href="/#solutions">Solutions</Link>
-              <Link href="/#industries">Industries</Link>
-              <Link href="/#approach">Our approach</Link>
+              <Link href="/about">About us</Link>
+              <Link href="/solutions">Solutions</Link>
+              <Link href="/industries">Industries</Link>
+              <Link href="/projects">Projects</Link>
             </div>
 
             <div>
               <h3>Get in touch</h3>
-              <Link href="/#contact">Start a conversation</Link>
+              <Link href="/contact">Start a conversation</Link>
               <a href="mailto:hello@clarioft.com">Email us</a>
               <span>Kenya · Working globally</span>
             </div>

@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 const solutions = [
   {
@@ -96,29 +96,30 @@ export default function Home() {
           <div className="hero-content">
             <div className="eyebrow hero-eyebrow">
               <span className="status-dot" />
-              BUSINESS TECHNOLOGY & DIGITAL SOLUTIONS
+              BUSINESS SYSTEMS  •  SOFTWARE ENGINEERING
             </div>
 
             <h1>
-              Your business.
+              Software built
               <br />
-              <span>Better connected.</span>
+              around the way
               <br />
-              Built to grow.
+              <span>your business works.</span>
             </h1>
 
             <p className="hero-description">
-              We design and build practical digital systems that simplify
-              operations, connect your workflows and give your business
-              room to grow.
+              Clarioft connects business understanding with practical
+              software engineering. We design and build business systems
+              that bring operations, people and information together —
+              helping organisations work with greater clarity and control.
             </p>
 
             <div className="hero-actions">
               <Link href="#contact" className="button button-primary">
                 Discuss your project <span>↗</span>
               </Link>
-              <Link href="#solutions" className="button button-secondary">
-                Explore our solutions <span>↓</span>
+              <Link href="/projects" className="button button-secondary">
+                Explore our work <span>↗</span>
               </Link>
             </div>
 
@@ -128,7 +129,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-visual" aria-label="Illustration of connected business systems">
+          <div className="hero-visual" aria-label="Illustrative business operations dashboard showing connected workflows and organised business information">
             <div className="visual-orbit orbit-one" />
             <div className="visual-orbit orbit-two" />
 
@@ -461,4 +462,3 @@ export default function Home() {
     </>
   );
 }
-

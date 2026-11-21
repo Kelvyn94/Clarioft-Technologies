@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -2146,5 +2146,431 @@ button {
 
   .contact-enquiry-card {
     padding: 25px 20px;
+  }
+}
+
+/* CLARIOFT HOMEPAGE REFINEMENT — MILESTONE 4 */
+
+/* More distinctive hero atmosphere */
+.hero-section {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 78% 45%, rgb(25 198 177 / 17%), transparent 38%),
+    radial-gradient(ellipse at 8% 90%, rgb(32 91 125 / 20%), transparent 38%),
+    linear-gradient(115deg, #091522 0%, #102438 56%, #10313b 100%);
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 520px;
+  height: 520px;
+  top: -260px;
+  right: 12%;
+  border-radius: 50%;
+  background: rgb(25 198 177 / 9%);
+  filter: blur(100px);
+  pointer-events: none;
+  animation: clarioft-ambient 12s ease-in-out infinite alternate;
+}
+
+.hero-grid-pattern {
+  opacity: 0.16;
+  background-size: 56px 56px;
+  mask-image: linear-gradient(90deg, transparent 5%, black 55%, black);
+}
+
+.hero-layout {
+  min-height: 670px;
+  gap: 48px;
+}
+
+.hero-content {
+  animation: clarioft-enter 850ms cubic-bezier(.2,.7,.2,1) both;
+}
+
+.hero-eyebrow {
+  gap: 11px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.hero-content h1 {
+  max-width: 690px;
+  font-size: clamp(46px, 5.2vw, 70px);
+  line-height: 1.09;
+  letter-spacing: -4.2px;
+  text-wrap: balance;
+}
+
+.hero-content h1 span {
+  background: linear-gradient(100deg, #19c6b1 5%, #7ce7d8 55%, #b1eee5 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  max-width: 525px;
+  color: #bdcbd4;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.hero-actions {
+  gap: 14px;
+}
+
+.button {
+  min-height: 53px;
+  border-radius: 5px;
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.button-primary {
+  box-shadow: 0 8px 28px rgb(25 198 177 / 13%);
+}
+
+.button-primary:hover {
+  box-shadow: 0 12px 34px rgb(25 198 177 / 25%);
+}
+
+.button-secondary:hover {
+  border-color: rgb(25 198 177 / 55%);
+}
+
+.hero-note {
+  margin-top: 48px;
+}
+
+/* Refined dashboard visual */
+.hero-visual {
+  min-height: 470px;
+  perspective: 1000px;
+  animation: clarioft-enter 1000ms 120ms cubic-bezier(.2,.7,.2,1) both;
+}
+
+.visual-orbit {
+  border-color: rgb(91 189 184 / 22%);
+  box-shadow: 0 0 35px rgb(25 198 177 / 4%);
+}
+
+.orbit-one {
+  animation: clarioft-orbit 24s linear infinite;
+}
+
+.orbit-two {
+  animation: clarioft-orbit-reverse 32s linear infinite;
+}
+
+.system-card {
+  width: min(385px, 82%);
+  padding: 28px;
+  border-color: rgb(139 220 211 / 24%);
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, rgb(34 62 78 / 97%), rgb(14 35 49 / 98%));
+  box-shadow:
+    0 35px 100px rgb(0 0 0 / 35%),
+    0 0 55px rgb(25 198 177 / 7%),
+    inset 0 1px 0 rgb(255 255 255 / 8%);
+  transform: rotateY(-5deg) rotateX(2deg);
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+.system-card:hover {
+  transform: rotateY(0) rotateX(0) translateY(-5px);
+  box-shadow:
+    0 40px 110px rgb(0 0 0 / 38%),
+    0 0 65px rgb(25 198 177 / 12%);
+}
+
+.system-card-header {
+  padding-bottom: 17px;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+.system-card h3 {
+  font-size: 21px;
+  letter-spacing: -0.8px;
+}
+
+.system-icon {
+  border-radius: 10px;
+  background: rgb(25 198 177 / 8%);
+  box-shadow: 0 0 20px rgb(25 198 177 / 9%);
+}
+
+.system-metrics > div {
+  border-color: rgb(255 255 255 / 10%);
+  background: linear-gradient(135deg, rgb(255 255 255 / 5%), rgb(255 255 255 / 2%));
+}
+
+.system-visual-bars {
+  position: relative;
+  overflow: hidden;
+}
+
+.system-visual-bars::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 12%), transparent);
+  transform: translateX(-100%);
+  animation: clarioft-scan 5s ease-in-out infinite;
+}
+
+.floating-card {
+  border-color: rgb(255 255 255 / 65%);
+  border-radius: 9px;
+  box-shadow: 0 18px 45px rgb(0 0 0 / 22%);
+  animation: clarioft-float 6s ease-in-out infinite;
+}
+
+.floating-card-right {
+  animation-delay: -3s;
+}
+
+.visual-label {
+  letter-spacing: 1.7px;
+}
+
+.hero-bottom {
+  border-top-color: rgb(255 255 255 / 15%);
+}
+
+/* Subtle interaction polish across the homepage */
+.solution-card,
+.industry-card,
+.process-step {
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease,
+    background 240ms ease;
+}
+
+.solution-card:hover,
+.industry-card:hover {
+  transform: translateY(-5px);
+}
+
+.solution-card:hover {
+  border-color: rgb(25 198 177 / 55%);
+  box-shadow: 0 18px 45px rgb(16 31 48 / 7%);
+}
+
+.industry-card:hover {
+  border-color: rgb(25 198 177 / 50%);
+  background: #fff;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
+}
+
+/* Motion */
+@keyframes clarioft-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes clarioft-ambient {
+  from {
+    transform: translate3d(-20px, 10px, 0) scale(.9);
+  }
+  to {
+    transform: translate3d(30px, 35px, 0) scale(1.12);
+  }
+}
+
+@keyframes clarioft-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes clarioft-orbit {
+  from {
+    transform: rotate(-23deg);
+  }
+  to {
+    transform: rotate(337deg);
+  }
+}
+
+@keyframes clarioft-orbit-reverse {
+  from {
+    transform: rotate(35deg);
+  }
+  to {
+    transform: rotate(-325deg);
+  }
+}
+
+@keyframes clarioft-scan {
+  0%, 35% {
+    transform: translateX(-100%);
+  }
+  75%, 100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Responsive refinements */
+@media (max-width: 900px) {
+  .hero-layout {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-block: 76px 35px;
+  }
+
+  .hero-content {
+    max-width: 680px;
+  }
+
+  .hero-visual {
+    width: min(100%, 590px);
+    min-height: 440px;
+    margin-inline: auto;
+  }
+
+  .hero-bottom {
+    min-height: 58px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-layout {
+    padding-block: 60px 25px;
+  }
+
+  .hero-eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.35px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(40px, 11vw, 54px);
+    letter-spacing: -2.8px;
+    line-height: 1.12;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero-note {
+    margin-top: 32px;
+    font-size: 10px;
+  }
+
+  .hero-visual {
+    min-height: 365px;
+    margin-top: 5px;
+  }
+
+  .system-card {
+    width: 84%;
+    padding: 21px;
+    transform: none;
+  }
+
+  .system-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .floating-card {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .floating-card-left {
+    left: -2px;
+    top: 42px;
+  }
+
+  .floating-card-right {
+    right: -2px;
+    bottom: 45px;
+  }
+
+  .floating-card strong {
+    font-size: 9px;
+  }
+
+  .floating-card small {
+    font-size: 8px;
+  }
+
+  .visual-label-top {
+    top: 5px;
+    right: 0;
+    font-size: 7px;
+  }
+
+  .visual-label-bottom {
+    bottom: 5px;
+    left: 0;
+    font-size: 7px;
+  }
+
+  .orbit-one {
+    width: 95%;
+    height: 220px;
+  }
+
+  .orbit-two {
+    width: 270px;
+    height: 270px;
+  }
+
+  .hero-bottom {
+    gap: 12px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+/* Accessibility: preserve the design without forced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section *,
+  .hero-section *::before,
+  .hero-section *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .system-card {
+    transform: none;
   }
 }

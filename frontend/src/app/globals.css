@@ -3915,3 +3915,54 @@ a:focus-visible {
     gap: 15px;
   }
 }
+
+
+/* CLARIOFT SCROLL REVEALS — MILESTONE 11 */
+@keyframes clarioft-scroll-reveal {
+  from {
+    opacity: 0;
+    translate: 0 30px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Progressive enhancement: browsers without view timelines retain the normal layout. */
+@supports (animation-timeline: view()) {
+  .intro-layout,
+  .principle-strip,
+  .photo-story-heading,
+  .photo-story-card,
+  .solutions-heading-row,
+  .solution-card,
+  .industries-heading-row,
+  .industry-card,
+  .approach-heading-row,
+  .process-step,
+  .contact-panel {
+    animation: clarioft-scroll-reveal 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+}
+
+/* Accessibility: disable scroll reveals when reduced motion is requested. */
+@media (prefers-reduced-motion: reduce) {
+  .intro-layout,
+  .principle-strip,
+  .photo-story-heading,
+  .photo-story-card,
+  .solutions-heading-row,
+  .solution-card,
+  .industries-heading-row,
+  .industry-card,
+  .approach-heading-row,
+  .process-step,
+  .contact-panel {
+    animation: none !important;
+    translate: none !important;
+  }
+}

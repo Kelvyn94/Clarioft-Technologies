@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -103,7 +103,7 @@ export default function Home() {
           <div className="hero-content">
             <div className="eyebrow hero-eyebrow">
               <span className="status-dot" />
-              BUSINESS SYSTEMS  â€¢  SOFTWARE ENGINEERING
+              BUSINESS SYSTEMS  •  SOFTWARE ENGINEERING
             </div>
 
             <h1>
@@ -117,16 +117,16 @@ export default function Home() {
             <p className="hero-description">
               Clarioft connects business understanding with practical
               software engineering. We design and build business systems
-              that bring operations, people and information together â€”
+              that bring operations, people and information together —
               helping organisations work with greater clarity and control.
             </p>
 
             <div className="hero-actions">
               <Link href="#contact" className="button button-primary">
-                Discuss your project <span>â†—</span>
+                Discuss your project <span>↗</span>
               </Link>
               <Link href="/projects" className="button button-secondary">
-                Explore our work <span>â†—</span>
+                Explore our work <span>↗</span>
               </Link>
             </div>
 
@@ -151,7 +151,7 @@ export default function Home() {
                   <span className="system-overline">BUSINESS OVERVIEW</span>
                   <h3>Operations hub</h3>
                 </div>
-                <span className="system-icon">âœ³</span>
+                <span className="system-icon">✳</span>
               </div>
 
               <div className="system-metrics">
@@ -187,7 +187,7 @@ export default function Home() {
             </div>
 
             <div className="floating-card floating-card-left">
-              <span className="floating-icon">â†—</span>
+              <span className="floating-icon">↗</span>
               <div>
                 <strong>Smarter workflows</strong>
                 <small>Less repetitive work</small>
@@ -195,7 +195,7 @@ export default function Home() {
             </div>
 
             <div className="floating-card floating-card-right">
-              <span className="floating-icon floating-icon-teal">â—Ž</span>
+              <span className="floating-icon floating-icon-teal">◎</span>
               <div>
                 <strong>Connected systems</strong>
                 <small>Information in sync</small>
@@ -334,7 +334,7 @@ export default function Home() {
               <article className="solution-card" key={solution.number}>
                 <div className="solution-card-top">
                   <span>{solution.number}</span>
-                  <span className="solution-arrow">â†—</span>
+                  <span className="solution-arrow">↗</span>
                 </div>
 
                 <h3>{solution.title}</h3>
@@ -380,7 +380,7 @@ export default function Home() {
                   <h3>{industry.name}</h3>
                   <p>{industry.description}</p>
                 </div>
-                <span className="industry-arrow">â†—</span>
+                <span className="industry-arrow">↗</span>
               </article>
             ))}
           </div>
@@ -446,10 +446,10 @@ export default function Home() {
 
               <div className="contact-actions">
                 <a
-                  href="mailto:hello@clarioft.com?subject=Business%20Enquiry"
+                  href="mailto:servicesa947@gmail.com?subject=Business%20Enquiry"
                   className="button button-light"
                 >
-                  Start a conversation <span>â†—</span>
+                  Start a conversation <span>↗</span>
                 </a>
                 <span className="contact-response-note">
                   Business enquiries & project discussions

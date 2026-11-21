@@ -2951,3 +2951,354 @@ a:focus-visible {
     transform: none;
   }
 }
+
+/* CLARIOFT INDUSTRIES PAGE — MILESTONE 6 */
+
+.industry-intro-section {
+  padding: 76px 0 82px;
+  background: #fff;
+}
+
+.industry-intro-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  align-items: center;
+  gap: 80px;
+}
+
+.industry-intro-layout h2,
+.industry-approach-heading h2 {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: #101f30;
+  font-size: clamp(2rem, 3.5vw, 3.1rem);
+  line-height: 1.13;
+  letter-spacing: -0.045em;
+}
+
+.industry-intro-layout > p {
+  max-width: 540px;
+  margin: 0;
+  color: #71808e;
+  font-size: 1.04rem;
+  line-height: 1.9;
+}
+
+.industry-catalogue-section {
+  padding: 90px 0 100px;
+  background: #f5f7f8;
+}
+
+.industry-catalogue-heading {
+  max-width: 720px;
+  margin-bottom: 44px;
+}
+
+.industry-catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.industry-catalogue-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 34px;
+  overflow: hidden;
+  border: 1px solid #e7ebef;
+  border-radius: 18px;
+  background: #fff;
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    border-color 240ms ease;
+}
+
+.industry-catalogue-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #19c6b1, #0c9d91);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms ease;
+}
+
+.industry-catalogue-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(25, 198, 177, 0.35);
+  box-shadow: 0 22px 55px rgba(16, 31, 48, 0.09);
+}
+
+.industry-catalogue-card:hover::before {
+  transform: scaleX(1);
+}
+
+.industry-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.industry-number {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #e9f9f6;
+  color: #0c9d91;
+  font-size: 0.83rem;
+  font-weight: 750;
+}
+
+.industry-card-topline .eyebrow {
+  color: #71808e;
+  font-size: 0.67rem;
+  letter-spacing: 0.11em;
+  text-align: right;
+}
+
+.industry-catalogue-card h3 {
+  margin: 0 0 12px;
+  color: #101f30;
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.industry-card-description {
+  min-height: 78px;
+  margin: 0 0 24px;
+  color: #71808e;
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.industry-challenge {
+  margin-bottom: 24px;
+  padding: 17px 19px;
+  border-left: 3px solid #19c6b1;
+  border-radius: 0 10px 10px 0;
+  background: #f5f7f8;
+}
+
+.industry-detail-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #0c9d91;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.105em;
+}
+
+.industry-challenge p,
+.industry-outcome p {
+  margin: 0;
+  color: #435363;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.industry-capabilities {
+  margin-bottom: 24px;
+}
+
+.industry-capabilities ul {
+  display: grid;
+  gap: 11px;
+  margin: 13px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.industry-capabilities li {
+  position: relative;
+  padding-left: 22px;
+  color: #435363;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.industry-capabilities li::before {
+  position: absolute;
+  top: 0.52em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #19c6b1;
+  content: "";
+}
+
+.industry-outcome {
+  margin-top: auto;
+  padding-top: 19px;
+  border-top: 1px solid #e7ebef;
+}
+
+.industry-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #e7ebef;
+}
+
+.industry-card-footer > span {
+  color: #71808e;
+  font-size: 0.77rem;
+  font-weight: 600;
+}
+
+.industry-card-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0c9d91;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: gap 180ms ease;
+}
+
+.industry-card-footer a:hover {
+  gap: 13px;
+}
+
+.industry-card-footer a:focus-visible {
+  outline: 2px solid #19c6b1;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.industry-approach-section {
+  padding: 96px 0;
+  background: #fff;
+}
+
+.industry-approach-heading {
+  max-width: 680px;
+  margin-bottom: 42px;
+}
+
+.industry-approach-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.industry-approach-grid article {
+  min-width: 0;
+  padding: 26px 23px;
+  border: 1px solid #e7ebef;
+  border-radius: 14px;
+  background: #fff;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.industry-approach-grid article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(25, 198, 177, 0.45);
+  box-shadow: 0 14px 35px rgba(16, 31, 48, 0.06);
+}
+
+.industry-approach-grid article > span {
+  color: #0c9d91;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.industry-approach-grid h3 {
+  margin: 19px 0 10px;
+  color: #101f30;
+  font-size: 1.15rem;
+}
+
+.industry-approach-grid p {
+  margin: 0;
+  color: #71808e;
+  font-size: 0.87rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .industry-intro-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .industry-approach-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .industry-intro-section {
+    padding: 55px 0;
+  }
+
+  .industry-catalogue-section {
+    padding: 65px 0;
+  }
+
+  .industry-catalogue-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .industry-catalogue-card {
+    padding: 25px 21px;
+  }
+
+  .industry-card-description {
+    min-height: 0;
+  }
+
+  .industry-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .industry-approach-section {
+    padding: 65px 0;
+  }
+
+  .industry-approach-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .industry-approach-grid article {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-catalogue-card,
+  .industry-catalogue-card::before,
+  .industry-card-footer a,
+  .industry-approach-grid article {
+    transition: none;
+  }
+
+  .industry-catalogue-card:hover,
+  .industry-approach-grid article:hover {
+    transform: none;
+  }
+}

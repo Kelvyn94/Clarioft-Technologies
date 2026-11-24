@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
@@ -16,13 +17,15 @@ const projects = [
     title: "Medical Commerce ERP",
     description:
       "A business management application being developed to connect medical commerce operations, including inventory, sales, finance and reporting.",
+    image: "/images/medical-erp.png",
+    imageAlt: "Clarioft Medical Commerce ERP management dashboard",
     capabilities: [
       "Business and product management",
       "Inventory and sales workflows",
       "Financial records and reporting",
       "Payment and tax integration development",
     ],
-    technologies: "FastAPI · React · PostgreSQL",
+    technologies: "FastAPI · React · Supabase",
     featured: true,
     href: "/contact",
     linkLabel: "Discuss a similar system",
@@ -35,6 +38,8 @@ const projects = [
     title: "TradeX",
     description:
       "A trading journal and analytics application designed to help traders organise trade records, review performance and examine their trading activity.",
+    image: "/images/tradex.png",
+    imageAlt: "TradeX trading journal and analytics application",
     capabilities: [
       "Trade journaling and record keeping",
       "Performance analytics",
@@ -54,6 +59,8 @@ const projects = [
     title: "Atlas OS",
     description:
       "A dashboard and API project exploring how application interfaces and backend services can work together to organise and present information.",
+    image: "/images/atlas-intelligence.png",
+    imageAlt: "Atlas Intelligence OS dashboard",
     capabilities: [
       "Dashboard interface",
       "API-backed application structure",
@@ -73,6 +80,8 @@ const projects = [
     title: "Business Website",
     description:
       "A public-facing website project demonstrating website structure, content presentation and responsive web development.",
+    image: "/images/business-website.png",
+    imageAlt: "Business Website development project preview",
     capabilities: [
       "Business information architecture",
       "Responsive page layouts",
@@ -115,6 +124,9 @@ const capabilities = [
 ];
 
 export default function ProjectsPage() {
+  const featuredProject = projects.find((project) => project.featured);
+  const otherProjects = projects.filter((project) => !project.featured);
+
   return (
     <>
       <PageHero
@@ -127,74 +139,52 @@ export default function ProjectsPage() {
         description="Explore selected software projects and product development work. Each demonstrates a different way technology can organise information, improve workflows or support better decisions."
       />
 
-      <section className="project-feature-section">
-        <div className="container">
-          <div className="project-feature">
-            <div className="project-feature-visual">
-              <div className="project-window">
-                <div className="project-window-top">
-                  <span />
-                  <span />
-                  <span />
-                  <small>MEDICAL COMMERCE ERP</small>
+      {featuredProject && (
+        <section className="project-feature-section">
+          <div className="container">
+            <div className="project-feature">
+              <div className="project-feature-visual project-real-visual">
+                <div className="project-image-frame project-feature-image">
+                  <Image
+                    src={featuredProject.image}
+                    alt={featuredProject.imageAlt}
+                    width={1440}
+                    height={900}
+                    priority
+                    sizes="(max-width: 900px) 100vw, 58vw"
+                  />
+                  <span className="project-image-caption">
+                    CLARIOFT MEDICAL COMMERCE ERP
+                  </span>
                 </div>
+              </div>
 
-                <div className="project-window-body">
-                  <div className="project-sidebar">
-                    <strong>CLARIOFT</strong>
-                    <span>Overview</span>
-                    <span>Products</span>
-                    <span>Inventory</span>
-                    <span>Sales</span>
-                    <span>Finance</span>
-                  </div>
-
-                  <div className="project-dashboard">
-                    <span className="project-dash-label">BUSINESS OVERVIEW</span>
-                    <strong>Management dashboard</strong>
-                    <div className="project-stat-grid">
-                      <div><small>OPERATIONS</small><b>Connected</b></div>
-                      <div><small>INVENTORY</small><b>Tracked</b></div>
-                      <div><small>REPORTING</small><b>Insights</b></div>
-                    </div>
-                    <div className="project-chart">
-                      <span /><span /><span /><span /><span /><span /><span />
-                    </div>
-                    <div className="project-table-lines">
-                      <i /><i /><i /><i />
-                    </div>
-                  </div>
+              <div className="project-feature-copy">
+                <span className="eyebrow">FEATURED PRODUCT</span>
+                <div className="project-status">
+                  Active product development
                 </div>
+                <h2>{featuredProject.title}</h2>
+                <p>{featuredProject.description}</p>
+                <p>
+                  Its development explores inventory, sales, finance, reporting
+                  and integrations within one business application.
+                </p>
+                <Link href="/contact" className="button button-primary">
+                  Discuss a similar system <span aria-hidden="true">↗</span>
+                </Link>
               </div>
             </div>
 
-            <div className="project-feature-copy">
-              <span className="eyebrow">FEATURED PRODUCT</span>
-              <div className="project-status">Active product development</div>
-              <h2>Medical Commerce ERP</h2>
-              <p>
-                A business management platform being developed for medical
-                commerce operations, bringing key business workflows into a
-                more connected environment.
-              </p>
-              <p>
-                Its development explores inventory, sales, finance, reporting
-                and integrations within one business application.
-              </p>
-              <Link href="/contact" className="button button-primary">
-                Discuss a similar system <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
+            <p className="project-disclaimer">
+              Screenshot from the project development environment. The ERP is
+              under active development; individual capabilities and
+              integrations should not be interpreted as completed production
+              features.
+            </p>
           </div>
-
-          <p className="project-disclaimer">
-            The dashboard illustration is a conceptual representation, not a
-            live product screenshot. This project is under active development;
-            individual capabilities and integrations should not be interpreted
-            as completed production features.
-          </p>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="project-portfolio-section">
         <div className="container">
@@ -208,11 +198,18 @@ export default function ProjectsPage() {
           </div>
 
           <div className="project-portfolio-grid">
-            {projects.map((project) => (
-              <article
-                className={`project-portfolio-card${project.featured ? " project-portfolio-card-featured" : ""}`}
-                key={project.number}
-              >
+            {otherProjects.map((project) => (
+              <article className="project-portfolio-card" key={project.number}>
+                <div className="project-card-image">
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    width={1200}
+                    height={750}
+                    sizes="(max-width: 700px) 100vw, 50vw"
+                  />
+                </div>
+
                 <div className="project-portfolio-top">
                   <span className="project-portfolio-number">
                     {project.number}
@@ -233,9 +230,7 @@ export default function ProjectsPage() {
                 </p>
 
                 <div className="project-portfolio-capabilities">
-                  <span className="project-detail-label">
-                    PROJECT SCOPE
-                  </span>
+                  <span className="project-detail-label">PROJECT SCOPE</span>
                   <ul>
                     {project.capabilities.map((capability) => (
                       <li key={capability}>{capability}</li>

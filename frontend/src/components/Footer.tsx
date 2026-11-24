@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Brand from "@/components/Brand";
 
 export default function Footer() {
@@ -27,6 +27,13 @@ export default function Footer() {
             <div>
               <h3>Get in touch</h3>
               <Link href="/contact">Start a conversation</Link>
+              <a
+                href="https://wa.me/254794610102?text=Hello%20Clarioft%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp: +254 794 610 102
+              </a>
               <a href="mailto:hello@clarioft.com">Email us</a>
               <span>Kenya · Working globally</span>
             </div>

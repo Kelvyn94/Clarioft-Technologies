@@ -9,7 +9,7 @@ export default function ContactForm() {
   return (
     <div className="contact-enquiry-card">
       <span className="eyebrow">PROJECT ENQUIRY</span>
-      <h2>Let's discuss your project.</h2>
+      <h2>Let&apos;s discuss your project.</h2>
       <p>
         Ready to improve your business with technology?
         Send us an email describing what you need.
@@ -44,3 +44,4 @@ export default function ContactForm() {
     </div>
   );
 }
+

@@ -139,3 +139,43 @@ def test_root_endpoint():
 
     assert response.status_code == 200
     assert response.json()["company"] == "Clarioft Technologies"
+
+@pytest.fixture(autouse=True)
+def reset_contact_rate_limit():
+    with main_module._rate_limit_lock:
+        main_module._contact_attempts.clear()
+    yield
+
+
+def test_contact_rate_limit_blocks_sixth_submission(monkeypatch):
+    monkeypatch.setattr(
+        main_module, "send_contact_email", lambda _enquiry: None
+    )
+
+    responses = [
+        client.post("/api/contact", json=VALID_ENQUIRY)
+        for _ in range(5)
+    ]
+
+    assert all(response.status_code == 202 for response in responses)
+
+    blocked = client.post("/api/contact", json=VALID_ENQUIRY)
+
+    assert blocked.status_code == 429
+    assert "Retry-After" in blocked.headers
+    assert "Too many enquiries" in blocked.json()["detail"]
+
+
+def test_contact_rate_limit_returns_security_headers():
+    response = client.get("/api/health")
+
+    assert response.headers["X-Content-Type-Options"] == "nosniff"
+    assert response.headers["X-Frame-Options"] == "DENY"
+    assert (
+        response.headers["Referrer-Policy"]
+        == "strict-origin-when-cross-origin"
+    )
+    assert (
+        response.headers["Permissions-Policy"]
+        == "camera=(), microphone=(), geolocation=()"
+    )

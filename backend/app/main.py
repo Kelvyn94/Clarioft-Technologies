@@ -1,17 +1,29 @@
 ﻿import logging
 import os
+from collections import defaultdict, deque
+from math import ceil
 from pathlib import Path
+from threading import Lock
+from time import monotonic
 from typing import Literal
 
 import httpx
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 logger = logging.getLogger(__name__)
+
+CONTACT_RATE_LIMIT = 5
+CONTACT_RATE_WINDOW_SECONDS = 60
+
+_contact_attempts: dict[str, deque[float]] = defaultdict(deque)
+_rate_limit_lock = Lock()
+
 
 app = FastAPI(
     title="Clarioft Technologies API",
@@ -34,6 +46,78 @@ app.add_middleware(
     allow_methods=["GET", "POST"],
     allow_headers=["Content-Type"],
 )
+
+
+def add_security_headers(response, request: Request):
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "DENY")
+    response.headers.setdefault(
+        "Referrer-Policy", "strict-origin-when-cross-origin"
+    )
+    response.headers.setdefault(
+        "Permissions-Policy",
+        "camera=(), microphone=(), geolocation=()",
+    )
+    response.headers.setdefault(
+        "Cross-Origin-Opener-Policy", "same-origin"
+    )
+
+    if request.url.scheme == "https":
+        response.headers.setdefault(
+            "Strict-Transport-Security",
+            "max-age=63072000; includeSubDomains",
+        )
+
+    return response
+
+
+@app.middleware("http")
+async def security_and_rate_limit_middleware(
+    request: Request, call_next
+):
+    if (
+        request.url.path == "/api/contact"
+        and request.method == "POST"
+    ):
+        client_ip = (
+            request.client.host if request.client else "unknown"
+        )
+        now = monotonic()
+
+        with _rate_limit_lock:
+            attempts = _contact_attempts[client_ip]
+
+            while (
+                attempts
+                and now - attempts[0] >= CONTACT_RATE_WINDOW_SECONDS
+            ):
+                attempts.popleft()
+
+            if len(attempts) >= CONTACT_RATE_LIMIT:
+                retry_after = max(
+                    1,
+                    ceil(
+                        CONTACT_RATE_WINDOW_SECONDS
+                        - (now - attempts[0])
+                    ),
+                )
+
+                response = JSONResponse(
+                    status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                    content={
+                        "detail": (
+                            "Too many enquiries. Please wait before "
+                            "submitting another message."
+                        )
+                    },
+                    headers={"Retry-After": str(retry_after)},
+                )
+                return add_security_headers(response, request)
+
+            attempts.append(now)
+
+    response = await call_next(request)
+    return add_security_headers(response, request)
 
 
 class ContactEnquiry(BaseModel):
@@ -134,15 +218,24 @@ def submit_contact(enquiry: ContactEnquiry):
         logger.error("Contact email delivery is not configured.")
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Enquiry delivery is not configured yet. Please email servicesa947@gmail.com directly.",
+            detail=(
+                "Enquiry delivery is not configured yet. "
+                "Please email servicesa947@gmail.com directly."
+            ),
         )
     except httpx.HTTPError:
         logger.exception("Contact email API request failed.")
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
-            detail="We could not send your enquiry. Please try again or email servicesa947@gmail.com.",
+            detail=(
+                "We could not send your enquiry. Please try again "
+                "or email servicesa947@gmail.com."
+            ),
         )
 
     return {
-        "message": "Your enquiry has been sent successfully. Thank you for contacting Clarioft.",
+        "message": (
+            "Your enquiry has been sent successfully. "
+            "Thank you for contacting Clarioft."
+        ),
     }

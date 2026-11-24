@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Brand from "@/components/Brand";
 
 export default function Footer() {
@@ -34,17 +34,18 @@ export default function Footer() {
               >
                 WhatsApp: +254 794 610 102
               </a>
-              <a href="mailto:hello@clarioft.com">Email us</a>
-              <span>Kenya · Working globally</span>
+              <a href="mailto:servicesa947@gmail.com">Email us</a>
+              <span>Kenya Â· Working globally</span>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 Clarioft Technologies.</span>
+          <span>Â© 2026 Clarioft Technologies.</span>
           <span>Technology built around your business.</span>
         </div>
       </div>
     </footer>
   );
 }
+
